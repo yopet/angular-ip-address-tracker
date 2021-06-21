@@ -28,11 +28,12 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.initializeMapOptions();
     this.breakpoint = (window.innerWidth <= 600) ? 1 : 4;
-    this.size =  (window.innerWidth <= 600) ? "2:0.4":"2:1"
+    this.size =  (window.innerWidth <= 600) ? "2:0.4":"2:1";
   }
 
   onMapReady(map: Map) {
     this.map = map;
+    this.getGeolocalizacion()
     //this.addSampleMarker();
   }
 
