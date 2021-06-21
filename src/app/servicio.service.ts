@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServicioService {
   
-  private REST_API_SERVER = "https://geo.ipify.org/api/v1?apiKey=at_yquC6iCdqf7fKInWPRu8CGDUWfFIC&ipAddress=";
+  private REST_API_SERVER = "https://geo.ipify.org/api/v1?apiKey=at_yquC6iCdqf7fKInWPRu8CGDUWfFIC&";
 
   constructor(private httpClient: HttpClient) { }
 

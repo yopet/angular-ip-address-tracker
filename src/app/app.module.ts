@@ -11,11 +11,16 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackBarComponentSnackComponent } from './snack-bar-component-snack/snack-bar-component-snack.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    SnackBarComponentSnackComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,9 @@ import {FormsModule} from '@angular/forms'
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

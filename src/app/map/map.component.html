@@ -1,4 +1,4 @@
-<mat-toolbar class="fondo">
+<mat-toolbar class="fondo" *ngIf="!loading">
     <mat-toolbar-row>
         <span class="titulo">IP Address Track</span>
     </mat-toolbar-row>
@@ -11,38 +11,30 @@
     </mat-toolbar-row>
     <mat-toolbar-row>
         <mat-card class="center tarjeta">
-            <!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
-                <mat-grid-tile>1</mat-grid-tile>
-                <mat-grid-tile>2</mat-grid-tile>
-                <mat-grid-tile>3</mat-grid-tile>
-                <mat-grid-tile>4</mat-grid-tile>
-            </mat-grid-list>-->
-
             <mat-grid-list [cols]="breakpoint" [rowHeight]="size" (window:resize)="onResize($event)">
-                <mat-grid-tile class="content">
-                    <div class="block-content__title">IP ADDRESS</div>
-                    <div class="block-content__content">{{geolocalizacion ? geolocalizacion.ip : ''}}</div>
+                <mat-grid-tile class="content borde">
+                    <h2 class="title">IP ADDRESS</h2>
+                    <p class="contet_data">{{geolocalizacion ? geolocalizacion.ip : ''}}</p>
+                </mat-grid-tile>
+                <mat-grid-tile class="content borde">
+                    <h2 class="title">LOCATION</h2>
+                    <span class="contet_data">{{geolocalizacion ? geolocalizacion.location.country:''}}{{geolocalizacion ? ' , ' : ''}}{{geolocalizacion ? geolocalizacion.location.region:''}}{{geolocalizacion ? ' , ' : ''}}{{geolocalizacion ? geolocalizacion.location.city : ''}} {{geolocalizacion ? geolocalizacion.location.postalCode: ''}}</span>
+                </mat-grid-tile>
+                <mat-grid-tile class="content borde">
+                    <h2 class="title">TIMEZONE</h2>
+                    <p class="contet_data">{{geolocalizacion ? geolocalizacion.location.timezone :''}}</p>
                 </mat-grid-tile>
                 <mat-grid-tile class="content">
-                    <div class="block-content__title">LOCATION</div>
-                    <div class="block-content__content">{{geolocalizacion ? geolocalizacion.location.country:''}},{{geolocalizacion ? geolocalizacion.location.city : ''}} {{geolocalizacion ? geolocalizacion.location.postalCode: ''}}</div>
-                </mat-grid-tile>
-                <mat-grid-tile class="content">
-                    <div class="block-content__title">TIMEZONE</div>
-                    <div class="block-content__content">{{geolocalizacion ? geolocalizacion.location.timezone :''}}</div>
-                </mat-grid-tile>
-                <mat-grid-tile class="content">
-                    <div class="block-content__title_end">ISP</div>
-                    <div class="block-content__content_end">{{geolocalizacion ? geolocalizacion.isp :''}}</div>
+                    <h2 class="title">ISP</h2>
+                    <p class="contet_data">{{geolocalizacion ? geolocalizacion.isp :''}}</p>
                 </mat-grid-tile>
             </mat-grid-list>
         </mat-card>
     </mat-toolbar-row>
-
-
-
-
-
 </mat-toolbar>
-<div id="map" leaflet (leafletMapReady)="onMapReady($event)" [leafletOptions]="mapOptions">
+<div [hidden]="loading" id="map" leaflet (leafletMapReady)="onMapReady($event)" [leafletOptions]="mapOptions">
+</div>
+
+<div *ngIf="loading">
+    <mat-spinner class="loading"></mat-spinner>
 </div>
